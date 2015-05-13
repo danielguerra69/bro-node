@@ -10,11 +10,11 @@ RUN apt-get -y  install sendmail  libffi-dev libclick-0.4-dev Ocl-icd-opencl-dev
 
 #prequisits from source
 #rocksdb
-WORKDIR /tmp
-RUN git clone --recursive https://github.com/facebook/rocksdb.git
-WORKDIR /tmp/rocksdb
-RUN make
-RUN make install
+#WORKDIR /tmp
+#RUN git clone --recursive https://github.com/facebook/rocksdb.git
+#WORKDIR /tmp/rocksdb
+#RUN make
+#RUN make install
 
 # ipsumdump
 WORKDIR /tmp
