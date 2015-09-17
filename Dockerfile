@@ -34,13 +34,12 @@ RUN make install
 
 #bro 2.4beta
 WORKDIR /tmp
-RUN wget https://www.bro.org/downloads/beta/bro-2.4-beta.tar.gz
-RUN tar xvf bro-2.4-beta.tar.gz
-WORKDIR /tmp/bro-2.4-beta
+RUN git clone --recursive --branch v2.4 git://git.bro.org/bro
+WORKDIR /tmp/bro
 RUN ./configure --enable-broker
 RUN make all
 RUN make install
-WORKDIR /tmp/bro-2.4-beta/aux/plugins/elasticsearch
+WORKDIR /tmp/bro/aux/plugins/elasticsearch
 RUN ./configure
 RUN make
 RUN make install
