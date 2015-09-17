@@ -5,16 +5,16 @@ MAINTAINER Daniel Guerra <daniel.guerra69@gmail.com>
 #prequisits
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive
-RUN apt-get -y  install sendmail  libffi-dev libclick-0.4-dev Ocl-icd-opencl-dev libboost-dev doxygen git libcurl4-gnutls-dev libgoogle-perftools-dev libgeoip-dev geoip-database rsync openssh-server pwgen cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev
+RUN apt-get -y  install build-essential sendmail  libffi-dev libclick-0.4-dev Ocl-icd-opencl-dev libboost-dev doxygen git libcurl4-gnutls-dev libgoogle-perftools-dev libgeoip-dev geoip-database rsync openssh-server pwgen cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev php5-curl openssl gawk libgflags-dev 
 
 
 #prequisits from source
 #rocksdb
-#WORKDIR /tmp
-#RUN git clone --recursive https://github.com/facebook/rocksdb.git
-#WORKDIR /tmp/rocksdb
-#RUN make
-#RUN make install
+WORKDIR /tmp
+RUN git clone --recursive https://github.com/facebook/rocksdb.git
+WORKDIR /tmp/rocksdb
+RUN make static_lib
+RUN make install
 
 # ipsumdump
 WORKDIR /tmp
@@ -45,7 +45,7 @@ RUN make
 RUN make install
 
 #clean the dev packages 
-RUN apt-get -y remove libffi-dev libclick-0.4-dev ocl-icd-opencl-dev libboost-dev libcurl4-gnutls-dev libgeoip-dev cmake make gcc g++ flex bison libssl-dev python-dev swig zlib1g-dev
+RUN apt-get -y remove libffi-dev libclick-0.4-dev ocl-icd-opencl-dev libboost-dev libcurl4-gnutls-dev libgeoip-dev cmake make gcc g++ flex bison libssl-dev python-dev swig zlib1g-dev curl bzip2 snappy
 RUN apt-get -y autoremove
 
 #cleanup apt & build action
