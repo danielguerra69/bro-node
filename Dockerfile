@@ -5,7 +5,7 @@ MAINTAINER Daniel Guerra <daniel.guerra69@gmail.com>
 #prequisits
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive
-RUN apt-get -y  install build-essential sendmail  libffi-dev libclick-0.4-dev Ocl-icd-opencl-dev libboost-dev doxygen git libcurl4-gnutls-dev libgoogle-perftools-dev libgeoip-dev geoip-database rsync openssh-server pwgen cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev php5-curl openssl gawk libgflags-dev libsnappy-dev libbz2-dev
+RUN apt-get -y  install build-essential devscripts sendmail  libffi-dev libclick-0.4-dev Ocl-icd-opencl-dev libboost-dev doxygen git libcurl4-gnutls-dev libgoogle-perftools-dev libgeoip-dev geoip-database rsync openssh-server pwgen cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev php5-curl openssl gawk libgflags-dev libsnappy-dev libbz2-dev
 
 
 #prequisits from source
