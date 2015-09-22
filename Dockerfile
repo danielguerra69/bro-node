@@ -39,9 +39,8 @@ RUN make install
 
 #bro 2.4.1
 WORKDIR /tmp
-RUN wget https://www.bro.org/downloads/release/bro-2.4.1.tar.gz
-RUN tar xvf bro-2.4.1.tar.gz
-WORKDIR /tmp/bro-2.4.1
+RUN git clone --recursive git://git.bro.org/bro
+RUN WORKDIR /tmp/bro
 RUN ./configure
 RUN make all
 RUN make install
