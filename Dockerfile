@@ -40,7 +40,7 @@ RUN make install
 #bro 2.4.1
 WORKDIR /tmp
 RUN git clone --recursive git://git.bro.org/bro
-RUN WORKDIR /tmp/bro
+WORKDIR /tmp/bro
 RUN ./configure
 RUN make all
 RUN make install
