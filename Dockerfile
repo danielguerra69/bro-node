@@ -39,15 +39,16 @@ RUN make install
 
 #bro 2.4.1
 WORKDIR /tmp
-RUN git clone --recursive git://git.bro.org/bro
-WORKDIR /tmp/bro
+RUN wget https://www.bro.org/downloads/release/bro-2.4.1.tar.gz
+RUN tar xvf bro-2.4.1.tar.gz
+WORKDIR /tmp/bro-2.4.1
 RUN ./configure
 RUN make all
 RUN make install
-WORKDIR /tmp/bro/aux/plugins/elasticsearch
-RUN ./configure
-RUN make
-RUN make install
+#WORKDIR /tmp/bro/aux/plugins/elasticsearch
+#RUN ./configure
+#RUN make
+#RUN make install
 
 #clean the dev packages 
 RUN apt-get -y remove libffi-dev libclick-0.4-dev ocl-icd-opencl-dev libboost-dev libcurl4-gnutls-dev libgeoip-dev cmake make gcc g++ flex bison libssl-dev python-dev swig zlib1g-dev curl bzip2 snappy
