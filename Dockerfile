@@ -26,17 +26,18 @@ RUN make install
 
 #actor framework caf to enable broker
 WORKDIR /tmp
-RUN git clone --recursive https://github.com/actor-framework/actor-framework.git
+RUN git clone --recursive --branch 0.14.1 https://github.com/actor-framework/actor-framework.git
 WORKDIR /tmp/actor-framework
-RUN git submodule foreach git checkout master
-RUN git submodule foreach git pull
-RUN ./configure --no-riac
+# RUN git submodule foreach git checkout master
+# RUN git submodule foreach git pull
+# RUN ./configure --no-riac
+RUN ./configure --no-examples --no-benchmarks --no-opencl
 RUN make
 RUN make install
 
 #bro 2.4beta
 WORKDIR /tmp
-RUN git clone --recursive --branch v2.4 git://git.bro.org/bro
+RUN git clone --recursive git://git.bro.org/bro
 WORKDIR /tmp/bro
 RUN ./configure --enable-broker
 RUN make all
