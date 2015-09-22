@@ -46,7 +46,7 @@ RUN ./configure
 RUN make all
 RUN make install
 RUN git clone --recursive git://git.bro.org/bro-plugins.git
-WORKDIR /tmp/bro/bro-plugins/elasticsearch
+WORKDIR /tmp/bro-2.4.1/bro-plugins/elasticsearch
 RUN ./configure
 RUN make
 RUN make install
