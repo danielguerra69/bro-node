@@ -39,7 +39,7 @@ RUN make install
 WORKDIR /tmp
 RUN git clone --recursive git://git.bro.org/bro
 WORKDIR /tmp/bro
-RUN ./configure --enable-broker
+RUN ./configure
 RUN make all
 RUN make install
 WORKDIR /tmp/bro/aux/plugins/elasticsearch
