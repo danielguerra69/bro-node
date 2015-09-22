@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-# Bro 2.4beta 
+# Bro 2.4.1 
 MAINTAINER Daniel Guerra <daniel.guerra69@gmail.com>
 
 #prequisits
@@ -35,10 +35,11 @@ RUN ./configure --no-examples --no-benchmarks --no-opencl
 RUN make
 RUN make install
 
-#bro 2.4beta
+#bro 2.4.1
 WORKDIR /tmp
-RUN git clone --recursive git://git.bro.org/bro
-WORKDIR /tmp/bro
+RUN wget https://www.bro.org/downloads/release/bro-2.4.1.tar.gz
+RUN tar xvf bro-2.4.1.tar.gz
+WORKDIR /tmp/bro-2.4.1
 RUN ./configure
 RUN make all
 RUN make install
