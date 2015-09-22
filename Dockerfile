@@ -30,7 +30,7 @@ RUN git clone --recursive https://github.com/actor-framework/actor-framework.git
 WORKDIR /tmp/actor-framework
 RUN git submodule foreach git checkout master
 RUN git submodule foreach git pull
-RUN ./configure
+RUN ./configure --no-riac
 RUN make
 RUN make install
 
