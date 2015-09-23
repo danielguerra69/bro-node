@@ -70,6 +70,6 @@ RUN mkdir -p /var/run/sshd && sed -i "s/UsePrivilegeSeparation.*/UsePrivilegeSep
 EXPOSE 22
 EXPOSE 47761
 EXPOSE 47762
-
+ENV PATH /usr/local/bro/bin:$PATH
 #start sshd
 CMD [exec,/usr/sbin/sshd,-D]
