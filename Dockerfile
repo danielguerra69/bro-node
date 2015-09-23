@@ -64,12 +64,16 @@ RUN rm -rf *
 WORKDIR /var/log
 RUN rm -rf *
 
-#set sshd config for key based authentication
+#set sshd config for key based authentication for root
 RUN mkdir -p /var/run/sshd && sed -i "s/UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config && sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config && sed -i "s/PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config && sed -i "s/#AuthorizedKeysFile/AuthorizedKeysFile/g" /etc/ssh/sshd_config
 
+#prepare path
+RUN echo "export PATH=$PATH:/usr/local/bro/bin" > /root/.profile
+
+#set the expose ports
 EXPOSE 22
 EXPOSE 47761
 EXPOSE 47762
-ENV PATH /usr/local/bro/bin:$PATH
+
 #start sshd
-CMD [exec,/usr/sbin/sshd,-D]
+CMD ["exec","/usr/sbin/sshd","-D"]
