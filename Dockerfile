@@ -13,10 +13,8 @@ RUN apt-get -y  install build-essential devscripts sendmail  libffi-dev libclick
 WORKDIR /tmp
 RUN git clone --recursive https://github.com/facebook/rocksdb.git
 WORKDIR /tmp/rocksdb
-RUN export CFLAGS="$CFLAGS -fPIC"
-RUN export CXXFLAGS="$CXXFLAGS -fPIC"
-RUN make static_lib
-RUN make install
+RUN export CFLAGS="$CFLAGS -fPIC" && export CXXFLAGS="$CXXFLAGS -fPIC" && make static_lib
+RUN export CFLAGS="$CFLAGS -fPIC" && export CXXFLAGS="$CXXFLAGS -fPIC" && make install
 
 # ipsumdump
 WORKDIR /tmp
