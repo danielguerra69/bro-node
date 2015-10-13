@@ -40,7 +40,7 @@ WORKDIR /tmp
 RUN wget https://www.bro.org/downloads/release/bro-2.4.1.tar.gz
 RUN tar xvf bro-2.4.1.tar.gz
 WORKDIR /tmp/bro-2.4.1
-RUN ./configure
+RUN ./configure --enable-broker
 RUN make all
 RUN make install
 WORKDIR /tmp/bro-2.4.1/aux/plugins/elasticsearch
