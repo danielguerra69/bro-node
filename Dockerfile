@@ -26,7 +26,7 @@ RUN make install
 
 #actor framework caf to enable broker
 WORKDIR /tmp
-RUN git clone --recursive --branch 0.14.1 https://github.com/actor-framework/actor-framework.git
+RUN git clone --recursive --branch 0.13.2 https://github.com/actor-framework/actor-framework.git
 WORKDIR /tmp/actor-framework
 # RUN git submodule foreach git checkout master
 # RUN git submodule foreach git pull
