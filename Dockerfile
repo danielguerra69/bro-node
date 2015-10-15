@@ -40,9 +40,11 @@ WORKDIR /tmp
 RUN wget https://www.bro.org/downloads/release/bro-2.4.1.tar.gz
 RUN tar xvf bro-2.4.1.tar.gz
 WORKDIR /tmp/bro-2.4.1
-RUN ./configure --enable-broker
+RUN ./configure
 RUN make all
 RUN make install
+#make sure it uses the proper timestamp
+RUN sed -i "s/JSON::TS_MILLIS/JSON::TS_ISO8601/g" /tmp/bro/aux/plugins/elasticsearch/src/ElasticSearch.cc
 WORKDIR /tmp/bro-2.4.1/aux/plugins/elasticsearch
 RUN ./configure
 RUN make
