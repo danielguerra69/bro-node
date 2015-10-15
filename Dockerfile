@@ -45,6 +45,8 @@ RUN make all
 RUN make install
 #make sure it uses the proper timestamp
 RUN sed -i "s/JSON::TS_MILLIS/JSON::TS_ISO8601/g" /tmp/bro-2.4.1/aux/plugins/elasticsearch/src/ElasticSearch.cc
+RUN sed -i "s/127.0.0.1/elasticsearch/g" /tmp/bro-2.4.1/aux/plugins/elasticsearch/scripts/init.bro
+RUN sed -i "s/2secs/60secs/g" /tmp/bro-2.4.1/aux/plugins/elasticsearch/scripts/init.bro
 WORKDIR /tmp/bro-2.4.1/aux/plugins/elasticsearch
 RUN ./configure
 RUN make
