@@ -10,11 +10,11 @@ RUN apt-get -y  install build-essential devscripts sendmail  libffi-dev libclick
 
 #prequisits from source
 #rocksdb
-WORKDIR /tmp
-RUN git clone --recursive https://github.com/facebook/rocksdb.git
-WORKDIR /tmp/rocksdb
-RUN export CFLAGS="$CFLAGS -fPIC" && export CXXFLAGS="$CXXFLAGS -fPIC" && make static_lib
-RUN export CFLAGS="$CFLAGS -fPIC" && export CXXFLAGS="$CXXFLAGS -fPIC" && make install
+#WORKDIR /tmp
+#RUN git clone --recursive https://github.com/facebook/rocksdb.git
+#WORKDIR /tmp/rocksdb
+#RUN export CFLAGS="$CFLAGS -fPIC" && export CXXFLAGS="$CXXFLAGS -fPIC" && make static_lib
+#RUN export CFLAGS="$CFLAGS -fPIC" && export CXXFLAGS="$CXXFLAGS -fPIC" && make install
 
 # ipsumdump
 WORKDIR /tmp
@@ -26,7 +26,7 @@ RUN make install
 
 #actor framework caf to enable broker
 WORKDIR /tmp
-RUN git clone --recursive --branch 0.13.2 https://github.com/actor-framework/actor-framework.git
+RUN git clone --recursive --branch 0.14.2 https://github.com/actor-framework/actor-framework.git
 WORKDIR /tmp/actor-framework
 # RUN git submodule foreach git checkout master
 # RUN git submodule foreach git pull
@@ -40,7 +40,7 @@ WORKDIR /tmp
 RUN wget https://www.bro.org/downloads/release/bro-2.4.1.tar.gz
 RUN tar xvf bro-2.4.1.tar.gz
 WORKDIR /tmp/bro-2.4.1
-RUN ./configure
+RUN ./configure --enable-broker
 RUN make all
 RUN make install
 #make sure it uses the proper timestamp
